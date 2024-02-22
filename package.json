@@ -26,11 +26,16 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server/server.js",
+    "start": "concurrently \"npm run client\" \"npm run server\"",
+    "client": "cd client && npm start",
+    "server": "nodemon server/server.js",
     "build": "cd server && npm install && cd ../client && npm install && npm run build"
   },
   "author": "",
   "license": "ISC",
   "proxy": "http://localhost:5000",
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
 }
